@@ -38,10 +38,15 @@ module GlTail
         name = server.shift
         data = server.shift
 
-        if data['source'] && data['source'].downcase == 'local'
-          src = GlTail::Source::Local.new(@config)
-        else 
-          src = GlTail::Source::SSH.new(@config)
+        if data['source']
+          case data['source'].downcase 
+            when 'local'
+              src = GlTail::Source::Local.new(@config)
+            when 'heroku'
+              src = GlTail::Source::Heroku.new(@config)
+            else 
+              src = GlTail::Source::SSH.new(@config)
+          end
         end
         
         src.name = name

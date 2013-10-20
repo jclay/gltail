@@ -11,7 +11,7 @@ module GlTail
         # Setup tmp file to cache heroku log
         open_log_file
 
-        #Stream heroku log
+        # Stream heroku log
         open_heroku_log
 
         # Wait until the log file has been created before proceeding
@@ -58,9 +58,14 @@ module GlTail
         # to a tmp path
         cmd = "heroku logs -a #{app} --tail > #{@tmp_log_path}" 
 
-        Thread.new do
+        th = Thread.new do
           system(cmd)
         end
+
+        at_exit
+          th.terminate
+        end
+
       end
 
     end

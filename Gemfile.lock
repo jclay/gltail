@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/heroku/heroku.git
+  revision: ad3d1a538ffdcfe51c483193490198fdacb4b2fc
+  branch: v3.0.1
+  specs:
+    heroku (3.0.1)
+      heroku-api (~> 0.3.7)
+      launchy (>= 0.3.2)
+      netrc (~> 0.7.7)
+      rest-client (~> 1.6.1)
+      rubyzip
+
 PATH
   remote: .
   specs:
@@ -13,18 +25,12 @@ GEM
   specs:
     addressable (2.3.5)
     chipmunk (5.3.4.5)
-    excon (0.16.10)
+    excon (0.25.3)
     file-tail (1.0.12)
       tins (~> 0.5)
-    heroku (2.35.0)
-      heroku-api (~> 0.3.7)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.8)
-      excon (~> 0.16.10)
-    launchy (2.2.0)
+    heroku-api (0.3.15)
+      excon (~> 0.25.1)
+    launchy (2.3.0)
       addressable (~> 2.3)
     mime-types (1.25)
     net-ssh (2.6.5)
@@ -34,7 +40,7 @@ GEM
     opengl (0.8.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rubyzip (0.9.9)
+    rubyzip (1.0.0)
     tins (0.7.0)
 
 PLATFORMS
@@ -42,4 +48,4 @@ PLATFORMS
 
 DEPENDENCIES
   gltail!
-  heroku
+  heroku!

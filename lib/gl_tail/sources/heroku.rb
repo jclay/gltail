@@ -59,11 +59,12 @@ module GlTail
         cmd = "heroku logs -a #{app} --tail > #{@tmp_log_path}" 
 
         th = Thread.new do
-          system(cmd)
+          pid = Process.spawn(cmd)
         end
 
         at_exit do
-          th.terminate
+          Process.kill(:TERM, pid)
+          Process.wait(pid)
         end
 
       end

@@ -2,15 +2,15 @@ GlTail
     by Erlend Simonsen <mr@fudgie.org>
     http://www.fudgie.org
 
-# DESCRIPTION:
+# Description:
   Real-time view of server traffic and events using OpenGL and SSH.
 
-# INSTALL:
+# Install:
   * `gem install gltail`
   * On Ubuntu:
     * `sudo aptitude build-dep libopengl-ruby`
 
-# FEATURES:
+# Features:
   * Real-Time OpenGL view
   * Multiple logfiles on multiple servers
   * Configurable layout
@@ -23,7 +23,7 @@ GlTail
   * Free!
 gss
 
-# RUNNING:
+# Running:
 ```
   gl_tail --help
   gl_tail --new gl_tail.yaml
@@ -35,7 +35,7 @@ Options:
 
   To enable fullscreen mode, press `shift + f`, or set `fullscreen: true` in the config section of your `config.yaml`.
 
-# REQUIREMENTS:
+# Requirements:
   * rubygems    0.9.4
   * opengl      0.7.0.pre1
   * net-ssh     1.1.2

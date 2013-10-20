@@ -7,6 +7,8 @@ GlTail
 
 # INSTALL:
   * `gem install gltail`
+  * On Ubuntu:
+    * `sudo aptitude build-dep libopengl-ruby`
 
 # FEATURES:
   * Real-Time OpenGL view
@@ -19,6 +21,7 @@ GlTail
   * If you can 'tail' it, you can visualize it
   * Written in Ruby using net-ssh & libopengl-ruby
   * Free!
+gss
 
 # RUNNING:
 ```

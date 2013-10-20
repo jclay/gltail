@@ -62,7 +62,7 @@ module GlTail
           system(cmd)
         end
 
-        at_exit
+        at_exit do
           th.terminate
         end
 

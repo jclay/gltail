@@ -56,14 +56,16 @@ module GlTail
       def open_heroku_log
         # Uses heroku command line tools to tail a log and redirect output
         # to a tmp path
-        cmd = "heroku logs -a #{app} --tail > #{@tmp_log_path}" 
+        cmd = "bundle exec heroku logs -a #{app} --tail > #{@tmp_log_path}" 
 
-        th = Thread.new do
-          pid = Process.spawn(cmd)
-        end
+        # th = Thread.new do
+        pid = Process.spawn(cmd)
+        # end
+
+        puts pid
 
         at_exit do
-          Process.kill(:TERM, pid)
+          Process.kill(9, pid)
           Process.wait(pid)
         end
 

@@ -316,6 +316,8 @@ module GlTail
     end
 
     def start
+
+
       glutInit()
       glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE)
 

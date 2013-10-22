@@ -7,13 +7,13 @@
 # Parser which handles Rails 3 access logs
 class Rails3HerokuParser < Parser
   def parse( line )
-    if line =~ /Started (GET|POST|PUT|DELETE) "(.*)" for (\d+\.\d+\.\d+\.\d+) at .*$/
-      add_activity(:block => 'content', :name => 'page')
-      add_activity(:block => 'users', :name => $3)
-      add_activity(:block => 'urls', :name => HttpHelper.generalize_url($2))
-      if line =~ /app\[(web.+)\]: .+/
-        add_activity(:block => 'dynos', :name => $1)
-      end
+    if line=~ /heroku\[router\]: at=.+ method=(?<method>GET|POST|PUT|DELETE) path=(?<path>.*) host=.* fwd=(?<fwd>.*) dyno=(?<dyno>.*) connect=.* service=.* status=.* bytes=(?<bytes>.*)/
+      fwd = $~[:fwd].tr('"', '') # Strip quotes
+
+      add_activity(:block => 'content', :name => 'page', :size => $~[:bytes].to_f)
+      add_activity(:block => 'urls', :name => HttpHelper.generalize_url($~[:path]))
+      add_activity(:block => 'dynos', :name => $~[:dyno])
+      add_activity(:block => 'users', :name => fwd)
     end
   end
 end

@@ -171,9 +171,10 @@ module GlTail
         size = screen.min_blob_size
         if options[:size]
           size = options[:size].to_f
-
+          
           options[:real_size] = size
           @max_size = size if size > @max_size
+
           options[:size] = screen.min_blob_size + ((size / @max_size) * (screen.max_blob_size - screen.min_blob_size))
         end
 

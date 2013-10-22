@@ -58,14 +58,10 @@ module GlTail
         # to a tmp path
         cmd = "bundle exec heroku logs -a #{app} --tail > #{@tmp_log_path}" 
 
-        # th = Thread.new do
         pid = Process.spawn(cmd)
-        # end
-
-        puts pid
 
         at_exit do
-          Process.kill(9, pid)
+          Process.kill("INT", 0) # Interrupt current process. Also interrupts the spawned process.
           Process.wait(pid)
         end
 

@@ -34,7 +34,7 @@ require 'gl_tail/config/yaml_parser'
 # future options: JMS queue, spread.org, local tail, etc
 %w(base ssh local heroku).each {|s| require "gl_tail/sources/#{s}" }
 
-%w(version engine activity block item element parser resolver blob_store font_store).each {|f| require "gl_tail/#{f}" }
+%w(version engine activity block item element parser resolver blob_store font_store color).each {|f| require "gl_tail/#{f}" }
 
 Dir.glob( "#{File.dirname(__FILE__)}/gl_tail/parsers/*.rb" ).each {|f| require f }
 

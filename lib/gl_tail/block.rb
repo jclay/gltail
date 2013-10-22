@@ -101,7 +101,9 @@ class Block
     return unless options[:name]
     x = nil
     unless @elements[options[:name]]
-      x = Element.new(self, options[:name], @color || options[:color] )
+      # puts options[:name]
+      # puts "when is this runnign??"
+      x = Element.new(self, options[:name], options[:color] || @color)
       @elements[options[:name]] = x
       if @sorted.size > @size
         @sorted.insert(@size+1,x)
@@ -111,7 +113,8 @@ class Block
     else
       x = @elements[options[:name]]
     end
-    x.add_activity(options[:message], @color || options[:color], options[:size] || 0.01, options[:type] || 0, options[:real_size] || options[:size] )
+    # puts options.inspect
+    x.add_activity(options[:message], options[:color] || @color, options[:size] || 0.01, options[:type] || 0, options[:real_size] || options[:size] )
   end
 
   def add_event(options = { })
